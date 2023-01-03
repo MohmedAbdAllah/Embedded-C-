@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+#include <algorithm>
 
 using namespace std;
 
@@ -59,6 +60,7 @@ class Picture : public Graphic{
         vector<Graphic *> graph;
     public:
         void draw() const{
+            for_each(graph.begin(), graph.end(), mem_fn(&Graphic::draw)); 
             for(auto element : graph){
                 element->draw();
             }
