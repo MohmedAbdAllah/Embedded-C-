@@ -14,7 +14,7 @@ struct Records
     string address;
 
 };
-/**/
+/*
 template<class T>
 void sort(T::iterator& first, T::iterator& second, std::function<T> comp){
 
