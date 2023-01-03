@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <functional>
 
 using namespace std;
 
@@ -13,8 +14,12 @@ struct Records
     string address;
 
 };
+/**/
+template<class T>
+void sort(T::iterator& first, T::iterator& second, std::function<T> comp){
 
-
+}
+*/
 int main(){
     /*create vector of records*/
     vector<Records> vec(2);

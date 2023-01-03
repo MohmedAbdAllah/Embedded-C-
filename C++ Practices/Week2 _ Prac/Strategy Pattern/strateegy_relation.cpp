@@ -15,13 +15,13 @@ struct Speed
 
 struct BMW : Speed{
     void calculateSpeed(){
-        ////////
+        cout<< "Calculate  the speed of the BMW\n";
     }
 };
 
 struct MiniCoper : Speed{
     void calculateSpeed(){
-        ////////
+        cout<< "Calculate  the speed of the MiniCoper\n";
     }
 };
 //context
@@ -40,8 +40,10 @@ struct Vechicle{
 int main(){
     BMW bmw;
     MiniCoper minicoper;
-    Vechicle vehicle(&bmw);
-    Vechicle vehicle(&minicoper);
-
+    Vechicle vehicle1(&bmw);
+    Vechicle vehicle2(&minicoper);
+    vehicle1.vehicleSpeed();
+    vehicle2.vehicleSpeed();
+    
     return 0;
 } 
