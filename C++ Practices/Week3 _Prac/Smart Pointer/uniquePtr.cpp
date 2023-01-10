@@ -13,7 +13,6 @@ class Rectangle {
             length = l;
             breadth = b;
         }
-
         int area(){
             return length * breadth;
         }
@@ -23,6 +22,11 @@ int main(){
     std::unique_ptr<Rectangle> P1(new Rectangle(10,5));
     std::cout<< P1->area() << std::endl;
     //or
-    auto P2 = std::make_unique<Rectangle>();
+    auto P2 = std::make_unique<Rectangle>(1,2);
     //std::unique_ptr<Rectangle> P2(P1); Error
+
+    //->solution
+    std::cout<< P2->area() << std::endl;
+    P2 = std::move(P1);
+    std::cout<< P2->area() << std::endl;
 }
