@@ -21,7 +21,7 @@ namespace _std{
 }
 
 int main(){
-    _std::SmartPtr ptr(new char);//address : value
+    _std::SmartPtr<char> ptr(new char);//address : value
     *ptr = 48;
     printf("%c",*ptr);
  
