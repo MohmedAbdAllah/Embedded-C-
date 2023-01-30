@@ -41,3 +41,4 @@ Entity::Entity(String&& name) : mName(static_cast<String&&>(name)){//mName(std::
 void Entity::printName(){
             mName.print();  
 }
+ 

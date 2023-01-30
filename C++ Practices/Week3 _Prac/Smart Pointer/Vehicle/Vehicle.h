@@ -10,10 +10,11 @@
 #include "Climate_Controller.h"
 #include "Auto_Parking_Mode.h"
 #include "Self_Driving_Mode.h"
+#include <memory>
 
 class Vehicle{
     private:
-        Engine_Controller* Engine;
+        std::shared_ptr<Engine_Controller> Engine;
     public:
         Vehicle(){}
         virtual ~Vehicle() = default;
