@@ -1,13 +1,14 @@
 #include <iostream>
-//functions prototypes
+//functions prototype
 int sum(int ,int);
 int divide(int ,int);
 
 int main(){
-    int num_1 {} ,num_2 {};
+    int num_1 {0};
+    int num_2 {0};
 
-    //ask the user to enter two numbers
-    std::cout << "Enter Two integer numbers: ";
+    //asking the user to enter two numbers
+    std::cout << "Enter Two integer numbers: ";  
     std::cin >> num_1 >> num_2;
 
     //making the operation of summation and dividation.
