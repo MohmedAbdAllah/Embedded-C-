@@ -1,8 +1,8 @@
 #include <iostream>
 #include <array>
 
-void fillArray(float array[], int numberOfElments);
 void fillArray(std::array<float,4>* myArr);
+void fillArray(std::array<float,4>& myArr);
 
 int main(){
     float num1 = 10;
