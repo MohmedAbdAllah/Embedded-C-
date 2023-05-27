@@ -33,7 +33,7 @@ int main() {
 
 /*OR
 
-vector<int> moveToEnd(vector<int> vec , const int moveValue){
+vector<int> moveToEnd(vector<int>& vec , const int moveValue){
     vector<int> new_vec(vec.size());
     int firstElement = -1, lastElement = vec.size();
     for(size_t inc = 0 ;inc < vec.size();inc++){
@@ -54,7 +54,7 @@ int main() {
     vector<int> vec {1,2,3,2,10,9,2,27,30,17,8,9};
     int moveValue = 2;
     //move elements vector that equal to moveValue to the end
-    vec = moveToEnd(vec,moveValue);
+    moveToEnd(vec,moveValue);
     
     //print content
     for (auto e:vec) {
