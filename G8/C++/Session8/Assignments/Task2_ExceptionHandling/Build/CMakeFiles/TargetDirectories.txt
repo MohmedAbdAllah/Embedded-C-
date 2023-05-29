@@ -1,0 +1,3 @@
+/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session8/Assignments/Task2_ExceptionHandling/Build/CMakeFiles/main.dir
+/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session8/Assignments/Task2_ExceptionHandling/Build/CMakeFiles/edit_cache.dir
+/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session8/Assignments/Task2_ExceptionHandling/Build/CMakeFiles/rebuild_cache.dir

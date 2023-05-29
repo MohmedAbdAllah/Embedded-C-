@@ -27,7 +27,7 @@ int main(){
     void* ptr = static_cast<void*>(stream);
 
     std::cout << "stream as int: "<< *reinterpret_cast<int*>(ptr) << "\n";
-    std::cout << "stream as int: "<< *reinterpret_cast<int*>(ptr) << "\n";
+    std::cout << "stream as int: "<< reinterpret_cast<char*>(ptr) << "\n";
 
 
     return 0;
