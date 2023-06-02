@@ -21,7 +21,7 @@ int digit_sum(int num){
     int num_ = num;
     int sum {0};
 
-    for(; num_ != 0;){
+    while(num_ != 0){
         sum += num_%10;
         num_ /= 10;
     }

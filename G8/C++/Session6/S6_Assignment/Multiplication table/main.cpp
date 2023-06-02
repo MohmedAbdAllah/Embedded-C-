@@ -18,7 +18,7 @@ int main(){
     return 0;
 }
 //multiplication table funcation
-void multi_table(int num ,int limit){
+void multi_table(const int num ,const int limit){
     for(auto inc = 1; inc <= limit; inc++){
         printf("%d x %d = %d \n", num, inc, num * inc);
     }
