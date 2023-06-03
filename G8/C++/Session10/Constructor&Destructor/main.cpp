@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
 
-enum OEM : uint8_t 
+enum class OEM : uint8_t 
 {
     BWM,
     KIA,
 };
-enum Color
+enum class Color
 {
     BLACK,
     RED,
