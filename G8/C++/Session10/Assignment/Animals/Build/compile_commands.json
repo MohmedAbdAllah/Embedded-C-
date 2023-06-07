@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/Build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/farm_animals.dir/main.cpp.o -c \"/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/main.cpp\"",
+  "file": "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/main.cpp"
+},
+{
+  "directory": "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/Build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/farm_animals.dir/classFunc.cpp.o -c \"/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/classFunc.cpp\"",
+  "file": "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/classFunc.cpp"
+}
+]
