@@ -1,29 +1,123 @@
 #include "header.hpp"
 
 int main(){
-    Cow cow_1{"totoo", Type::Mammals, Food::Grass, 2};
-    cow_1.animalData();
-    cow_1.moo();
-    std::cout << "-----------------------------\n";
-    Chicken chicken_1{"cocyee", Type::Mammals, Food::Grains, 1};
-    chicken_1.animalData();
-    chicken_1.cocks();
-    std::cout << "-----------------------------\n";
-    Horse horse_1{"heheheha", Type::Mammals, Food::Hay, 3};
-    horse_1.animalData();
-    horse_1. neigh();
-    std::cout << "-----------------------------\n";
     Animal farm ;
-    farm.add_to_the_farm(cow_1);
-    farm.add_to_the_farm(chicken_1);
-    farm.add_to_the_farm(horse_1);
-    std::cout << "-----------------------------\n";
-    farm.farm_animals();
-    farm.remove_from_the_farm("totoo");
-    farm.remove_from_the_farm("totoo");
-    std::cout << "-----------------------------\n";
-    farm.farm_animals();
+
+    std::map<uint16_t,Type> typeMap;
+    typeMap[1] = Type::Mammals;
+    typeMap[2] = Type::Birds;
     
+    std::map<uint16_t,Food> foodMap;
+    foodMap[1] = Food::Grass;
+    foodMap[2] = Food::Hay;
+    foodMap[3] = Food::Grains;
+    
+    while(1){{
+
+        uint16_t num ;
+        std::string userInput;
+        std::vector<uint16_t> Inputs;
+        std::string animalName;
+
+        char add_remove ;
+        do{
+            std::cout << "Do you want to add to the farm or remove animal from it? (a/r)\n";
+            std::cin >> add_remove;
+            fflush;
+            if((add_remove != 'a') && (add_remove != 'r')){
+                    "you can only enter a or r\n";
+                    "try again\n";
+                }
+        }while((add_remove != 'a') && (add_remove != 'r'));
+
+        switch(add_remove){
+            case 'a':
+            {
+
+                std::cout << "Enter animal name: ";
+                std::cin >> animalName;
+
+                do{
+                    std::cout << "animal -> (1-Cow,2-Chicken,3-Horse): ";
+                    std::cin >> num;
+                    fflush;
+                    if((num < 1) || (num > 3)){
+                        "you can only enter 1, 2 or 3\n";
+                        "try again\n";
+                    }
+                }while((num < 1) || (num > 3));
+                Inputs.push_back(num);
+
+                do{
+                    std::cout << "type -> (1-Mammals, 2-Birds): ";
+                    std::cin >> num;
+                    if((num < 1) || (num > 2)){
+                        "you can only enter 1 or 2 \n";
+                        "try again\n";
+                    }
+                }while((num < 1) || (num > 2));
+                Inputs.push_back(num);
+
+                do{
+                    std::cout << "food -> (1-Grass, 2-Hay, 3-Grains): ";
+                    std::cin >> num;
+                    if((num < 1) || (num > 3)){
+                        "you can only enter 1, 2 or 3\n";
+                        "try again\n";
+                    }
+                }while((num < 1) || (num > 3));
+                Inputs.push_back(num);
+                Inputs.push_back(num);
+
+                std::cout << "Age: ";
+                std::cin >> num;
+                Inputs.push_back(num);
+
+                num = Inputs[0];
+
+                switch(num)
+                {
+                    case 1:
+                    {
+                        Cow cow{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        farm.add_to_the_farm(cow);
+
+                    }break;
+                    case 2:
+                    {
+                        Chicken chicken{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        farm.add_to_the_farm(chicken);
+
+                    }break;
+                    case 3:
+                    {
+                        Horse horse{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        farm.add_to_the_farm(horse);
+
+                    }break;
+                    default:{
+
+                    }break;  
+                }
+            }break;
+            case 'r':
+            {
+                std::cout << "Enter its name: ";
+                std::cin >> animalName;
+                farm.remove_from_the_farm(animalName);
+            }break;
+            default:{
+
+            }break; 
+
+        }
+
+        std::cout << "The farm animals: \n";
+        farm.farm_animals();
+                 
+    }}
+    
+
 
     return 0;
 }

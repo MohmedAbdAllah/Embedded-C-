@@ -3,19 +3,20 @@
 #define HEADER_HPP_
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <map>
 //Enum classes used to make the code more simple insteade of using numbers
-enum class Type{
+enum class Type : uint16_t{
     Mammals = 0,
     Birds
 };
-enum class Sound{
+enum class Sound : uint16_t{
     Moo = 0,
     Neigh,
     Cocks
 };
-enum class Food{
+enum class Food : uint16_t{
     Grass = 0,
     Hay,
     Grains
