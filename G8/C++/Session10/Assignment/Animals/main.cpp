@@ -12,9 +12,9 @@ int main(){
     foodMap[2] = Food::Hay;
     foodMap[3] = Food::Grains;
     
-    while(1){{
+    while(true){{
 
-        uint16_t num ;
+        uint16_t num {0};
         std::string userInput;
         std::vector<uint16_t> Inputs;
         std::string animalName;
@@ -23,7 +23,6 @@ int main(){
         do{
             std::cout << "Do you want to add to the farm or remove animal from it? (a/r)\n";
             std::cin >> add_remove;
-            fflush;
             if((add_remove != 'a') && (add_remove != 'r')){
                     "you can only enter a or r\n";
                     "try again\n";
@@ -40,7 +39,7 @@ int main(){
                 do{
                     std::cout << "animal -> (1-Cow,2-Chicken,3-Horse): ";
                     std::cin >> num;
-                    fflush;
+
                     if((num < 1) || (num > 3)){
                         "you can only enter 1, 2 or 3\n";
                         "try again\n";
@@ -73,30 +72,30 @@ int main(){
                 std::cin >> num;
                 Inputs.push_back(num);
 
-                num = Inputs[0];
+                num = Inputs.at(0);
 
                 switch(num)
                 {
                     case 1:
                     {
-                        Cow cow{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        Cow cow{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
                         farm.add_to_the_farm(cow);
 
                     }break;
                     case 2:
                     {
-                        Chicken chicken{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        Chicken chicken{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
                         farm.add_to_the_farm(chicken);
 
                     }break;
                     case 3:
                     {
-                        Horse horse{animalName,typeMap[Inputs[1]],foodMap[Inputs[2]],Inputs[3]};
+                        Horse horse{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
                         farm.add_to_the_farm(horse);
 
                     }break;
                     default:{
-
+                        std::cout <<"you can only enter 1, 2 or 3\n";
                     }break;  
                 }
             }break;
@@ -107,7 +106,7 @@ int main(){
                 farm.remove_from_the_farm(animalName);
             }break;
             default:{
-
+               std::cout << "you can choose between 'a' or 'r' only\n"; 
             }break; 
 
         }

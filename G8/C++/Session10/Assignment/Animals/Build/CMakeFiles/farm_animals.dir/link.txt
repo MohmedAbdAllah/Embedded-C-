@@ -1,1 +1,3 @@
-/usr/bin/c++ CMakeFiles/farm_animals.dir/main.cpp.o CMakeFiles/farm_animals.dir/classFunc.cpp.o -o farm_animals 
+C:\mingw64\bin\cmake.exe -E rm -f CMakeFiles\farm_animals.dir/objects.a
+C:\mingw64\bin\ar.exe qc CMakeFiles\farm_animals.dir/objects.a @CMakeFiles\farm_animals.dir\objects1.rsp
+C:\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\farm_animals.dir/objects.a -Wl,--no-whole-archive -o farm_animals.exe -Wl,--out-implib,libfarm_animals.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\farm_animals.dir\linkLibs.rsp
