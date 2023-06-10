@@ -1,3 +1,0 @@
-D:/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/Build/CMakeFiles/farm_animals.dir
-D:/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/Build/CMakeFiles/edit_cache.dir
-D:/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/Build/CMakeFiles/rebuild_cache.dir

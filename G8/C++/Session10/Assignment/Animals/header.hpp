@@ -1,9 +1,7 @@
-
 #ifndef HEADER_HPP_
 #define HEADER_HPP_
 #include <iostream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <map>
 //Enum classes used to make the code more simple insteade of using numbers

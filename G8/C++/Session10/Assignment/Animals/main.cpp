@@ -24,7 +24,7 @@ int main(){
             std::cout << "Do you want to add to the farm or remove animal from it? (a/r)\n";
             std::cin >> add_remove;
             if((add_remove != 'a') && (add_remove != 'r')){
-                    "you can only enter a or r\n";
+                    std::cout << "you can only enter a or r\n"
                     "try again\n";
                 }
         }while((add_remove != 'a') && (add_remove != 'r'));
@@ -41,18 +41,18 @@ int main(){
                     std::cin >> num;
 
                     if((num < 1) || (num > 3)){
-                        "you can only enter 1, 2 or 3\n";
+                        std::cout << "you can only enter 1, 2 or 3\n"
                         "try again\n";
                     }
                 }while((num < 1) || (num > 3));
                 Inputs.push_back(num);
 
-                do{
+                do{ 
                     std::cout << "type -> (1-Mammals, 2-Birds): ";
                     std::cin >> num;
                     if((num < 1) || (num > 2)){
-                        "you can only enter 1 or 2 \n";
-                        "try again\n";
+                        std::cout << "you can only enter 1 or 2 \n"
+                                     "try again\n";
                     }
                 }while((num < 1) || (num > 2));
                 Inputs.push_back(num);
@@ -61,8 +61,8 @@ int main(){
                     std::cout << "food -> (1-Grass, 2-Hay, 3-Grains): ";
                     std::cin >> num;
                     if((num < 1) || (num > 3)){
-                        "you can only enter 1, 2 or 3\n";
-                        "try again\n";
+                        std::cout << "you can only enter 1, 2 or 3\n"
+                                     "try again\n";
                     }
                 }while((num < 1) || (num > 3));
                 Inputs.push_back(num);

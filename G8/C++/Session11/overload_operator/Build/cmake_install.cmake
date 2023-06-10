@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals
+# Install script for directory: /mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session11/overload_operator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session10/Assignment/Animals/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/d/Courses/Embedded C++/Embedded C++/G8/C++/Session11/overload_operator/Build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
