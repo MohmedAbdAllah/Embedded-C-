@@ -3,13 +3,13 @@
 class Calculator{
     public:
         Calculator() = default;
-        virtual float multi(float num_1,float num_2);
+        virtual float multi(float num_1,float num_2) = 0;
 };
 
 class multiCalc : public Calculator{
     public:
         multiCalc() = default;
-        float multi(float num_1,float num_2){
+        float multi(float num_1,float num_2)override{
             return num_1 * num_2;
         }
 };
@@ -17,7 +17,7 @@ class multiCalc : public Calculator{
 class addCalc : public Calculator{
     public:
         addCalc() = default;
-        float multi(float num_1,float num_2){
+        float multi(float num_1,float num_2) override{
             uint16_t result {0};
             for(auto inc = 0; inc < num_1;inc++){
                 result += num_2;

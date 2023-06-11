@@ -1,40 +1,126 @@
 #include "header.hpp"
 
+std::string typeToString(const Type type){
+    switch (static_cast<int>(type))
+    {
+    case 0:
+        {
+            return "Mammals";
+        }break;
+    case 1:
+        {
+            return "Birds";
+        }break;
+    default:
+        return "No valid input";
+        break;
+    }
+}
+
+std::string soundToString(const Sound sound){
+    switch (static_cast<int>(sound))
+    {
+    case 0:
+        {
+            return "Moo";
+        }break;
+    case 1:
+        {
+            return "Neigh";
+        }break;
+    case 2:
+        {
+            return "Cocks";
+        }break;
+    default:
+        return "No valid input";
+        break;
+    }
+}
+
+std::string foodToString(const Food food){
+    switch (static_cast<int>(food))
+    {
+    case 0:
+        {
+            return "Grass";
+        }break;
+    case 1:
+        {
+            return "Hay";
+        }break;
+    case 2:
+        {
+            return "Grains";
+        }break;
+    default:
+        return "No valid input";
+        break;
+    }
+}
+
 //Here we can find the implementation of the functions which were in the classes "parent and his children" *0* in header.hppcm
 Animal::Animal()=default;
 
-Animal::Animal(const std::string& name,  const Type type, const uint16_t age,const std::string& animal)
-                :m_Name(name),m_Type(type),m_Age(age),m_Animal(animal)
+Animal::Animal(const Type type, const uint16_t age,const std::string& animal)
+                :m_Animal(animal),m_Age(age),m_Type(type)
 {
     std::cout << "Successfully identify the animal\n";
 }
 
-void Animal::animalData()
+void Animal::animalData() const
 {
     std::cout << "Name: " << m_Name
-            << ", Type: " << typeList.at(static_cast<int>(m_Type))
+            << " -> Animal: "<< m_Animal
+            << ", Type: " << typeToString(m_Type) 
             << ", Age: " << m_Age
-            << ", Sound: " << soundList.at(static_cast<int>(m_Sound)) <<"\n";
+            << ", Sound: " << soundToString(m_Sound)
+            << ", Food: " << foodToString(m_Food)<<"\n";
 }
 
-void Animal::farm_animals()
+Cow::Cow(const Type type, const Food food, const uint16_t age)
+            :Animal(type, age,static_cast<std::string>("Cow"))
 {
-    for (auto const& [animalName, data] : farmAnimals)
-        {
-            std::cout << animalName << " -> "<< data << std::endl;
-        }
-    std::cout << "Total farm animals : " << animalsNumber << "\n";
+    m_Sound = Sound::Moo;
+    m_Food = food; 
 }
 
-void Animal::add_to_the_farm(Animal animal)
+void Cow::make_sound() 
 {
-    farmAnimals[animal.m_Name] = "Animal:" + animal.m_Animal + ", Type:" + typeList.at(static_cast<int>(animal.m_Type)) + 
-                                 ", Age:" + std::to_string(animal.m_Age) + ", Sound:" + soundList.at(static_cast<int>(animal.m_Sound)) +
-                                 ", Food:" + foodList.at(static_cast<int>(animal.m_Food)); 
+    std::cout << "Cow is mooooo!" << "\n";
+}
+
+Chicken::Chicken(const Type type, const Food food, const uint16_t age)
+            :Animal(type, age,static_cast<std::string>("Chicken"))
+{
+    m_Sound = Sound::Cocks;
+    m_Food = food;
+}
+
+void Chicken::make_sound()
+{
+    std::cout << "Chicken is  cocks! cocks!" << "\n";
+}
+
+Horse::Horse(const Type type, const Food food, const uint16_t age)
+            :Animal(type, age, static_cast<std::string>("Horse"))
+{
+    m_Sound = Sound::Neigh;
+    m_Food = food;
+}
+
+void Horse::make_sound()
+{
+    std::cout << "Horse is neighhhhhh!" << "\n";
+}
+
+void Farm::add_to_the_farm(const Animal& animal)
+{
+    farmAnimals[animal.m_Name] = animal; 
     animalsNumber++;
 }
 
-void Animal::remove_from_the_farm(std::string name)
+void Farm::remove_from_the_farm(const std::string& name)
 {
 
     if(farmAnimals.find(name) != farmAnimals.end()){
@@ -44,52 +130,11 @@ void Animal::remove_from_the_farm(std::string name)
         std::cout << "Can not find this key!\n";
     } 
 }
-
-Cow::Cow(const std::string& name,  const Type type, const Food food, const uint16_t age)
-            :Animal(name,  type, age,static_cast<std::string>("Cow"))
+void Farm::farm_animals() const
 {
-    m_Sound = Sound::Moo;
-    m_Food = Food::Grass; 
-}
-
-void Cow::animalData()
-{
-    Animal::animalData();
-}
-void Cow::moo()
-{
-    std::cout << "Cow is mooooo!" << "\n";
-}
-
-Chicken::Chicken(const std::string& name,  const Type type, const Food food, const uint16_t age)
-            :Animal(name,  type, age,static_cast<std::string>("Chicken"))
-{
-    m_Sound = Sound::Cocks;
-    m_Food = Food::Grains;
-}
-
-void Chicken::animalData()
-{
-    Animal::animalData();
-}
-
-void Chicken::cocks()
-{
-    std::cout << "Chicken is  cocks! cocks!" << "\n";
-}
-
-Horse::Horse(const std::string& name,  const Type type, const Food food, const uint16_t age)
-            :Animal(name,  type, age, static_cast<std::string>("Horse"))
-{
-    m_Sound = Sound::Neigh;
-    m_Food = Food::Hay;
-}
-
-void Horse::animalData()
-{
-    Animal::animalData();
-}
-void Horse::neigh()
-{
-    std::cout << "Horse is neighhhhhh!" << "\n";
+    for (auto const& [animalName, data] : farmAnimals)
+        {
+            data.animalData();    
+        }
+    std::cout << "Total farm animals : " << animalsNumber << "\n";
 }

@@ -101,6 +101,5 @@
         "typeindex": "cpp",
         "valarray": "cpp",
         "variant": "cpp"
-    },
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}/Build/compile_commands.json"
+    }
 }

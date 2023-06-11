@@ -1,7 +1,7 @@
 #include "header.hpp"
 
 int main(){
-    Animal farm ;
+    Farm farm ;
 
     std::map<uint16_t,Type> typeMap;
     typeMap[1] = Type::Mammals;
@@ -78,20 +78,24 @@ int main(){
                 {
                     case 1:
                     {
-                        Cow cow{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
-                        farm.add_to_the_farm(cow);
+                        //Cow *cow_1 = &Cow{typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
+                        auto cow = std::make_shared<Cow>(typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3));
+                        cow->m_Name = animalName;
+                        farm.add_to_the_farm(*cow);
 
                     }break;
                     case 2:
                     {
-                        Chicken chicken{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
-                        farm.add_to_the_farm(chicken);
+                        auto chicken = std::make_shared<Chicken>(typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3));
+                        chicken->m_Name = animalName;
+                        farm.add_to_the_farm(*chicken);
 
                     }break;
                     case 3:
                     {
-                        Horse horse{animalName,typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3)};
-                        farm.add_to_the_farm(horse);
+                        auto horse = std::make_shared<Horse> (typeMap[Inputs.at(1)],foodMap[Inputs.at(2)],Inputs.at(3));
+                        horse->m_Name = animalName;
+                        farm.add_to_the_farm(*horse);
 
                     }break;
                     default:{
