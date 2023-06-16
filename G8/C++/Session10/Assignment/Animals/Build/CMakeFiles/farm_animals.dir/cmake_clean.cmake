@@ -1,10 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/farm_animals.dir/classFunc.cpp.o"
-  "CMakeFiles/farm_animals.dir/classFunc.cpp.o.d"
-  "CMakeFiles/farm_animals.dir/main.cpp.o"
-  "CMakeFiles/farm_animals.dir/main.cpp.o.d"
-  "farm_animals"
+  "CMakeFiles/farm_animals.dir/classFunc.cpp.obj"
+  "CMakeFiles/farm_animals.dir/classFunc.cpp.obj.d"
+  "CMakeFiles/farm_animals.dir/main.cpp.obj"
+  "CMakeFiles/farm_animals.dir/main.cpp.obj.d"
+  "farm_animals.exe"
+  "farm_animals.exe.manifest"
   "farm_animals.pdb"
+  "libfarm_animals.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
