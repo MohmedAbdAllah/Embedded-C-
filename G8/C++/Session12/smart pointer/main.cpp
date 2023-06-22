@@ -5,7 +5,7 @@ namespace myStd{
     class SmartPtr{
             int* ptr;
         public:
-            SmartPtr(int* p = nullptr){
+            explicit SmartPtr(int* p = nullptr){
                 ptr = p;
             }
 

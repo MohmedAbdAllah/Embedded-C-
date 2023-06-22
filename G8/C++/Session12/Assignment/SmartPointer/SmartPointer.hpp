@@ -9,7 +9,7 @@ class SmartPointer{
     private:
         std::shared_ptr<T> ptr;
     public:
-        SmartPointer(T* pointer){
+        explicit SmartPointer(T* pointer = nullptr){
             ptr = std::make_shared<T>(*pointer);
         }
         T* get() const{

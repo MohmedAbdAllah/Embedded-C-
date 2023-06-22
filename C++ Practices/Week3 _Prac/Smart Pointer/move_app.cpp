@@ -10,7 +10,7 @@ int main(){
     String str1("m.abdallah");
     Entity entity2(str1);
     entity2.printName();
-    Entity entity3(String("learning for ever"));//emplace casting
+    Entity entity3(String("learning for ever"));//implicit casting
     entity3.printName();
 
 
