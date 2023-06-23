@@ -182,9 +182,9 @@ class Cart{
                 orders.push_back(itr->second);
             }
 
-            for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
+            /*for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
                 m_Product.erase(itr);
-            }
+            }*/
 
             return orders;
         }      
@@ -195,7 +195,8 @@ class Order{
 
     public:
         Order(){}
-        void addCartProducts(std::vector<std::pair<Product,uint16_t>> orders){
+
+        void addCartProducts(std::vector<std::pair<Product,uint16_t>>&& orders){
             orderedProducts = orders;
         }
         
@@ -203,7 +204,7 @@ class Order{
         void orderHistory(){
             std::cout << "Orders History:\n";
             for(auto order : orderedProducts){
-                std::cout << "Order Number: " << order.second
+                std::cout << "Order Number: " << order.second << "\t"
                           << "Product Name: " << order.first.productName()
                           << " ,Product Quantities: " << order.first.productNumber()
                           << " ,Product Price: " << order.first.productNumber() * order.first.productPrice()
@@ -246,17 +247,17 @@ class PaymentProcessor{
         void DeliveryType(Delivery deliverTO){
             switch(static_cast<int>(deliverTO)){
             case 0:
-                {   
+                {   uint16_t location;
                     do{
-                        uint16_t location;
+                        
                         std::cout << "choose the station:\n";
                         std::cout << "1- Ramsis\n2- 5th Settlement\n3- 6 October\n";
                         std::cin >> location;
                         m_ShippingPrice = DeliveryToStation(location);
-                        if((m_ShippingPrice > 3) && (m_ShippingPrice < 1)){
+                        if((location > 3) || (location < 1)){
                             std::cout << "Invalid Input\n";
                         }
-                    }while((m_ShippingPrice > 3) && (m_ShippingPrice < 1));
+                    }while((location > 3) || (location < 1));
                 }break;
             case 1:
                 {
@@ -295,8 +296,10 @@ class PaymentProcessor{
         void orderSummary(){
             std::cout << "Order Summary: \n";
             m_Customer.customerDate();
-            std::cout << "Total Price: " << m_Total
-                      << "Pay Method: " << PayMethodToString(m_PayMethod);
+            std::cout <<"Order Price: " << m_SubTotal << "\n"
+                      <<"Shipping Price: " << m_ShippingPrice << "\n"
+                      << "Total Price: " << m_Total << "\n"
+                      << "Pay Method: " << PayMethodToString(m_PayMethod) << "\n";
 
         }
 

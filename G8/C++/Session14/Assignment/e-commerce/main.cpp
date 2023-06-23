@@ -10,12 +10,16 @@ int main(){
 
     std::cout << "Enter Your Information For Registration: \n";
     std::cout << "Name: ";
+    std::cin.ignore();
     std::getline(std::cin, Name);
     std::cout << "Address: ";
+    std::cin.ignore();
     std::getline(std::cin, Address);
     std::cout << "Number: ";
+    std::cin.ignore();
     std::getline(std::cin, Number);
     std::cout << "Email: ";
+    std::cin.ignore();
     std::getline(std::cin, Email);
     /*std::cout << "-------------------------------------\n";
     std::cout << "Name: " + Name <<std::endl;
@@ -31,11 +35,11 @@ int main(){
     Order orders;
     NotificationService notification;
 
-    std::cout << "Welcome Mr." + Name + "To our store ;) \n\n";
+    std::cout << "Welcome Mr." + Name + " To our store ;) \n\n";
     uint16_t productQ;
     float productPrice;
-    std::vector<std::string> productData(2);
-    std::string productName,productDescription;
+    std::string productName;
+    std::string productDescription;
     uint16_t add_remove {1};
     uint8_t confirm {'Y'};
     uint8_t history {'Y'};
@@ -45,17 +49,15 @@ int main(){
             {
             case 1:{
                 std::cout << "Tell Us Which Product You Want To Add To Your Cart: \n";
-                std::cout << "Product Name,Product Description: \n";
-                uint16_t i = 0;
-                while (i < 2) {
-                    std::getline(std::cin, productData[i]);
-                    i++;
-                }
-                productName = productData[0];
-                productDescription = productData[1];
+                std::cout << "Product Name: ";
+                std::cin.ignore();
+                std::getline(std::cin,productName);
+                std::cout << "Product Description: ";
+                std::cin.ignore();
+                std::getline(std::cin,productDescription);
                 std::cout << "Product Quantity: ";
                 std::cin >> productQ;
-                productPrice = ((float)(std::rand())*10) / (float)(std::rand());
+                productPrice = ((float)(std::rand())*100) / (float)(std::rand());
 
                 Product product(productName,productDescription,productPrice,productQ);
 
@@ -65,8 +67,8 @@ int main(){
             case 2:{
                 std::cout << "Tell Us Which Product You Want To Remove From Your Cart: \n";
                 std::cout << "Product Name: ";
-                std::getline(std::cin, productData[0]);
-                productName = productData[0];
+                std::cin.ignore();
+                std::getline(std::cin, productName);
                 cart.removeProduct(productName);
                 //add_remove = 0;
                 }break;
@@ -98,7 +100,7 @@ int main(){
             if(userInput == 1) delivery = Delivery::PickUpStation;
             else if(userInput == 2) delivery = Delivery::DoorDelivery;
             else std::cout << "Invalid Input\n";
-        }while((userInput > 2) && (userInput < 1));
+        }while((userInput > 2) || (userInput < 1));
 
         PProcessor.DeliveryType(delivery);
 
@@ -113,11 +115,12 @@ int main(){
             else if(userInput == 2) method = PayMethodType::Fawry;
             else if(userInput == 3) method = PayMethodType::CreditCard;
             else std::cout << "Invalid Input\n";
-        }while((userInput > 3) && (userInput < 1));
+        }while((userInput > 3) || (userInput < 1));
 
         PProcessor.payMethod(method);
 
         PProcessor.orderSummary();
+
         notification.orderPlaced();
         
         do{
@@ -125,11 +128,12 @@ int main(){
             std::cin >> confirm;
 
             if((confirm == 'Y' )||(confirm == 'y')){
-                orders.addCartProducts(cart.Confirm());
+                auto pro = cart.Confirm();
+                orders.addCartProducts(std::move(pro));
                 notification.orderConfirmed();
             }
-        }while((confirm != 'Y') || (confirm != 'y') || (confirm != 'N') || (confirm != 'n'));
-    }while(confirm == 'Y');
+        }while((confirm != 'Y') && (confirm != 'y') && (confirm != 'N') && (confirm != 'n'));
+    }while((confirm == 'n')||(confirm == 'N'));
 
     std::cout<< "Do you want to review your orders history ;)?(Y/n)\n";
     std::cin >> history;
@@ -139,9 +143,9 @@ int main(){
     std::cout<< "Thanks for shipping from our store :)\n";
 
     notification.orderShipped();
-    for(auto i = 0;i < 1000000000000;i++);
+    for(auto i = 0;i < 10000000;i++);
     notification.outForDelivery();
-    for(auto i = 0;i < 1000000000000;i++);
+    for(auto i = 0;i < 10000000;i++);
     notification.orderDelivered();
     
     return 0;
