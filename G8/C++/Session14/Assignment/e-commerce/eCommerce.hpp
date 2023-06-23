@@ -94,6 +94,10 @@ private:
     std::string m_Email;
     uint16_t DoorDeliveryPrice;
 public:
+    Customer(std::string name,std::string address,std::string number,std::string email,uint16_t doorDeliveryPrice):
+            m_Name(name),m_Address(address),m_Number(number),m_Email(email),DoorDeliveryPrice(doorDeliveryPrice){
+
+            }
     void customerDate() const {
         std::cout << "Name: " << m_Name << "\n"
                   << "E-Mail: "<< m_Email << "\n"
@@ -113,7 +117,8 @@ class Product{
         std::string m_Name;
         std::string m_Description;
     public:
-        Product(std::string&& name, std::string&& description, float&& price, uint16_t&& nproduct):
+        Product(){}
+        Product(std::string& name, std::string& description, float& price, uint16_t& nproduct):
                 m_Name(std::move(name)),m_Description(std::move(description)),m_Price(std::move(price)),m_Nproduct(std::move(nproduct))
         {
 
@@ -143,7 +148,7 @@ class Cart{
         //std::shared_ptr<Order> m_Order;
     public:
         Cart():m_Total(0){}
-        void addProduct(Product& const product){
+        void addProduct(Product& product){
             auto it = m_Product.find(product.productName());
             if(it != m_Product.end()){
                 m_Product[product.productName()].first.ModifyProductNumber(1);
@@ -151,7 +156,7 @@ class Cart{
                      m_Product[product.productName()] = std::pair<Product,uint16_t>(product,std::rand());
             }   
         }
-        void removeProduct(std::string& const element){
+        void removeProduct(std::string& element){
             auto it = m_Product.find(element);
             if(it != m_Product.end()){
                 if(m_Product[element].first.productNumber() > 1){
@@ -171,13 +176,17 @@ class Cart{
             }
             return m_Total;
         }
-        std::unique_ptr<Order> checkOut(){
+        std::vector<std::pair<Product,uint16_t>> Confirm(){
             std::vector<std::pair<Product,uint16_t>> orders;
             for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
                 orders.push_back(itr->second);
             }
 
-            return std::make_unique<Order>(orders);
+            for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
+                m_Product.erase(itr);
+            }
+
+            return orders;
         }      
 };
 class Order{
@@ -185,28 +194,32 @@ class Order{
         std::vector<std::pair<Product,uint16_t>> orderedProducts;
 
     public:
-        Order(std::vector<std::pair<Product,uint16_t>> orders)
-             :orderedProducts(orders){}
+        Order(){}
+        void addCartProducts(std::vector<std::pair<Product,uint16_t>> orders){
+            orderedProducts = orders;
+        }
+        
 
         void orderHistory(){
             std::cout << "Orders History:\n";
             for(auto order : orderedProducts){
-                std::cout << "Product Name: " << order.first.productName()
-                          << " ,Product Quantities: " << order.second
-                          << " ,Product Price: " << order.second * order.first.productPrice()
+                std::cout << "Order Number: " << order.second
+                          << "Product Name: " << order.first.productName()
+                          << " ,Product Quantities: " << order.first.productNumber()
+                          << " ,Product Price: " << order.first.productNumber() * order.first.productPrice()
                           << "\n";
             }
         }
 };
 
-class paymentProcessor{
+class PaymentProcessor{
     private:
         double m_SubTotal ;
         float m_ShippingPrice;
         double m_Total ;
         PayMethodType m_PayMethod;
         Customer& m_Customer;
-        float&& DeliveryToStation(uint16_t  station){
+        float DeliveryToStation(uint16_t  station){
             switch (station)
             {
             case 1:
@@ -228,7 +241,7 @@ class paymentProcessor{
             }
         }
     public:
-        paymentProcessor(double subTotal,Customer customer):m_SubTotal(subTotal),m_Customer(customer){}
+        PaymentProcessor(double subTotal,Customer customer):m_SubTotal(subTotal),m_Customer(customer){}
 
         void DeliveryType(Delivery deliverTO){
             switch(static_cast<int>(deliverTO)){
@@ -240,7 +253,10 @@ class paymentProcessor{
                         std::cout << "1- Ramsis\n2- 5th Settlement\n3- 6 October\n";
                         std::cin >> location;
                         m_ShippingPrice = DeliveryToStation(location);
-                    }while(m_ShippingPrice == 0);
+                        if((m_ShippingPrice > 3) && (m_ShippingPrice < 1)){
+                            std::cout << "Invalid Input\n";
+                        }
+                    }while((m_ShippingPrice > 3) && (m_ShippingPrice < 1));
                 }break;
             case 1:
                 {
@@ -284,11 +300,6 @@ class paymentProcessor{
 
         }
 
-        void Confirm(std::map<std::string,std::pair<Product,uint16_t>>& cartMap){
-            for(auto itr = cartMap.begin(); itr != cartMap.end(); itr++){
-                cartMap.erase(itr);
-            }
-        }
 };
 
 class NotificationService{
