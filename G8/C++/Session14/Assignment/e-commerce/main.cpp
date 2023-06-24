@@ -6,7 +6,6 @@ int main(){
     std::string Address;
     std::string Number;
     std::string Email;
-    uint16_t doorDeliveryPrice = 49;
 
     std::cout << "Enter Your Information For Registration: \n";
     std::cout << "Name: ";
@@ -21,16 +20,8 @@ int main(){
     std::cout << "Email: ";
     std::cin.ignore();
     std::getline(std::cin, Email);
-    /*std::cout << "-------------------------------------\n";
-    std::cout << "Name: " + Name <<std::endl;
 
-    std::cout << "Address: " + Address <<std::endl;
-
-    std::cout << "Number: " + Number <<std::endl;
-
-    std::cout << "Email: " + Email <<std::endl;
-    */
-    Customer customer(Name,Address,Number,Email,doorDeliveryPrice);
+    Customer customer(Name,Address,Number,Email);
     Cart cart;
     Order orders;
     NotificationService notification;
@@ -57,11 +48,11 @@ int main(){
                 std::getline(std::cin,productDescription);
                 std::cout << "Product Quantity: ";
                 std::cin >> productQ;
-                productPrice = ((float)(std::rand())*100) / (float)(std::rand());
+                productPrice = (float)(std::rand())/ 100;
 
-                Product product(productName,productDescription,productPrice,productQ);
+                Product product(productName,productDescription,productPrice);
 
-                cart.addProduct(product);
+                cart.addProduct(product,productQ);
                 //add_remove = 0;
                 }break;  
             case 2:{
@@ -129,7 +120,7 @@ int main(){
 
             if((confirm == 'Y' )||(confirm == 'y')){
                 auto pro = cart.Confirm();
-                orders.addCartProducts(std::move(pro));
+                orders.addCartProducts(pro);
                 notification.orderConfirmed();
             }
         }while((confirm != 'Y') && (confirm != 'y') && (confirm != 'N') && (confirm != 'n'));
