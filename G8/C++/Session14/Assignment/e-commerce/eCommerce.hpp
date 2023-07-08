@@ -160,12 +160,14 @@ class Cart{
             }
             
         }
+        //should not be here
         double totalPrice(){
             for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
                 m_Total += itr->second.first.productPrice() * itr->second.second;
             }
             return m_Total;
         }
+        //should not be here
         std::vector<std::pair<Product,uint16_t>> Confirm(){
             std::vector<std::pair<Product,uint16_t>> orders;
             for(auto itr = m_Product.begin(); itr != m_Product.end(); itr++){
