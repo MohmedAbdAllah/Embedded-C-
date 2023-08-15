@@ -1,15 +1,15 @@
 # Name of the binaries.
 PROJ_NAME=stm32f1-template
 MKDIR = "C:\Program Files (x86)\Git\bin\mkdir.exe" -p
-WORKSPACE_ROOT = C:/Me/Material/interfacing/RoboKit/stm32-workspace/stm32f1-template
+WORKSPACE_ROOT = D:\Courses\Embedded_Cpp\Embedded_Cpp\G8\Interfacing\stm32-workspace\stm32f1-template
 ######################################################################
 #                         SETUP TOOLS                                #
 ######################################################################
 
 # This is the path to the toolchain	
 # (we don't put our toolchain on $PATH to keep the system clean)
-TOOLS_DIR = 'C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin'
-#'C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/11.2 2022.02/bin'
+TOOLS_DIR = 'C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/11.2 2022.02/bin'
+#'C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin'
 #/opt/gcc-arm-embedded/gcc-arm-none-eabi-5_2-2015q4/bin
 
 # The tools we use

@@ -3,8 +3,8 @@
         { 
             "name": "STM32",
             "includePath": [
-                "D:\\Courses\\Embedded C++\\Embedded C++\\G8\\Interfacing\\stm32_workspace\\STM32F10x_StdPeriph_Lib_V3.5.0/**",
-                "D:\\Courses\\Embedded C++\\Embedded C++\\G8\\Interfacing\\stm32_workspace\\STM32F10x_StdPeriph_Lib_V3.5.0\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x/**",
+                "D:\\Courses\\Embedded_Cpp\\Embedded_Cpp\\G8\\Interfacing\\stm32_workspace\\STM32F10x_StdPeriph_Lib_V3.5.0/**",
+                "D:\\Courses\\Embedded_Cpp\\Embedded_Cpp\\G8\\Interfacing\\stm32_workspace\\STM32F10x_StdPeriph_Lib_V3.5.0\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x/**",
                 "${workspaceFolder}/**"
             ],
             "defines": [
